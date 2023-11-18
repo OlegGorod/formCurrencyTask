@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.min.css" />
+  <title>Game Currency Purchase</title>
+</head>
+
+<body>
+  <div class="game">
+    <form id="currencyForm">
+      <h1>QUICK BUY Game CURRENCY</h1>
+
+      <h3>Game details</h3>
+      <div class="game__details">
+        <select id="gameSelect" data-step="game">
+          <option value="World of Warcraft (EU)">World of Warcraft (EU)</option>
+          <option value="World of Warcraft (DE)">World of Warcraft (DE)</option>
+        </select>
+
+        <select id="serverSelect" data-step="server" disabled>
+          <option value="server1">Server 1</option>
+          <option value="server2">Server 2</option>
+        </select>
+
+        <select id="fractionSelect" data-step="fraction" disabled>
+          <option value="alliance">Alliance</option>
+          <option value="horde">Horde</option>
+        </select>
+      </div>
+
+      <h3>Game currency</h3>
+      <div class="game__currency">
+        <div class="game__currency-virtual">
+          <div class="game__currency-coins">
+            <label for="currencyVirtualAmount">Get:</label>
+            <div class="game__currency-icon">
+              <img data-step="gameCurrency" src="icons/game-icons_two-coins.svg" alt="coins" />
+              <img data-step="gameCurrency" src="icons/two-coins.svg" alt="coins" />
+              <input type="number" id="currencyVirtualAmount" data-step="gameCurrency" min="100" max="10000" disabled
+                value="1000.00" />
+            </div>
+          </div>
+          <span class="game__currency-gold">K Gold</span>
+        </div>
+
+        <div class="game__currency-wrapper">
+          <input class="game__currency-range" type="range" id="currencyRange" data-step="gameCurrency" min="100"
+          max="10000" step="5" value="1000" disabled />
+        </div>
+
+        <div class="game__currency-real">
+          <div class="game__currency-pay">
+            <label for="currencyRealAmount">Pay:</label>
+            <div class="game__currency-currency" id="currencyRealAmount" data-step="currency">€ 100.00</div>
+          </div>
+          <div class="game__currency-flag">
+            <img src="icons/EU.svg" data-currency="eur" alt="flag Euro" />
+            <img src="icons/usa.png" data-currency="usd" alt="flag USA" />
+            <select id="currencySelect" data-step="currency" disabled>
+              <option value="eur">EUR</option>
+              <option value="usd">USD</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="game__button">
+        <button data-step="currency" class="game__button-continue" type="button" id="continueButton" disabled>
+          Continue
+        </button>
+      </div>
+    </form>
+
+    <div class="game__overlay">
+      <div id="modal" class="game__modal">
+        <div class="game__modal-top">
+          <h2>Information</h2>
+          <span data-close>&times;</span>
+        </div>
+
+        <div class="game__modal-input">
+          <label for="username">character name:</label>
+          <input type="text" id="username" pattern="[A-Za-z]+" title="Only Latin letters allowed"
+            placeholder="Enter your character name" required />
+        </div>
+        <button type="button" id="buyCurrencyButton">Buy Currency</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
