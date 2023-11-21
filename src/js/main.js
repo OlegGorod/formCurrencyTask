@@ -127,9 +127,6 @@ function updateAmountForGame() {
 function getNextStep(currentStep) {
   const selectElement = document.querySelector(`[data-step=${currentStep}]`);
   switch (currentStep) {
-    // case "game":
-    //   selectElement.classList.add("done");
-    //   return "server";
     case "server":
       selectElement.classList.remove("active");
       selectElement.classList.add("done");
