@@ -19,6 +19,7 @@ const priceWorldfOfWarcraftDE = 15;
 
 let userChoices = {
   currency: "eur",
+  game: "World of Warcraft (EU)",
 };
 
 continueButton.addEventListener("click", openModal);
@@ -32,13 +33,13 @@ buyCurrencyButton.addEventListener("click", () => {
     resetFormAndSettings();
   }
 });
+
 currencyRangeInput.addEventListener("input", (event) =>
   handleRangeInputColor(event.target.value)
 );
 
 currencyForm.addEventListener("change", function (event) {
   const target = event.target;
-
   if (target.tagName === "SELECT" || target.tagName === "INPUT") {
     const step = target.getAttribute("data-step");
     userChoices[step] = target.value;
@@ -89,7 +90,12 @@ function resetFormAndSettings() {
   currencyForm.reset();
   document.querySelectorAll("[data-step]").forEach((element) => {
     if (element.id === "gameSelect") {
+      element.classList.add("done");
+      element.disabled = false;
+    } else if (element.id === "serverSelect") {
+      element.classList.add("active");
       element.classList.remove("done");
+      element.disabled = false;
     } else {
       element.disabled = true;
       element.classList.remove("active");
@@ -98,6 +104,7 @@ function resetFormAndSettings() {
   });
   userChoices = {
     currency: "eur",
+    game: "World of Warcraft (EU)",
   };
 
   handleRangeInputColor(disabledRangeInputColor);
@@ -120,9 +127,9 @@ function updateAmountForGame() {
 function getNextStep(currentStep) {
   const selectElement = document.querySelector(`[data-step=${currentStep}]`);
   switch (currentStep) {
-    case "game":
-      selectElement.classList.add("done");
-      return "server";
+    // case "game":
+    //   selectElement.classList.add("done");
+    //   return "server";
     case "server":
       selectElement.classList.remove("active");
       selectElement.classList.add("done");
